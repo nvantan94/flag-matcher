@@ -49,13 +49,11 @@ function App() {
         <CountDownTimer
           timer={timer}
           onTimerOut={onTimerOut}
+          boardId={board.boardId}
         />
         <Control
           controlNumber={controlNumber}
-          onTimerOut={onTimerOut}
-          timer={timer}
           score={score}
-          boardId={board.boardId}
         />
         <FlagBoard
           controlNumber={controlNumber}

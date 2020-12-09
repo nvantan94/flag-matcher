@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import './CountDownTimer.css'
 
-function CountDownTimer({ timer, onTimerOut }) {
+function CountDownTimer({ timer, onTimerOut, boardId }) {
   const [ countdown, setCountdown] = useState(timer);
   const [ width, setWidth ] = useState(100);
   const [ restart, setRestart ] = useState(true);
@@ -15,7 +15,7 @@ function CountDownTimer({ timer, onTimerOut }) {
 
   useEffect(() => {
     if (countdown.time === 0)
-      onTimerOut();
+      onTimerOut(boardId);
     else {
       let timeoutId;
       if (restart) {
