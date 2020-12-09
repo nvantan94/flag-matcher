@@ -46,7 +46,10 @@ function App() {
   return (
     <div className="App">
       <div className="App__container">
-        <CountDownTimer timer={timer}/>
+        <CountDownTimer
+          timer={timer}
+          onTimerOut={onTimerOut}
+        />
         <Control
           controlNumber={controlNumber}
           onTimerOut={onTimerOut}

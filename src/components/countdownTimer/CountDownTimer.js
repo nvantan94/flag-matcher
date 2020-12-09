@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import './CountDownTimer.css'
 
-function CountDownTimer({ timer }) {
+function CountDownTimer({ timer, onTimerOut }) {
   const [ countdown, setCountdown] = useState(timer);
   const [ width, setWidth ] = useState(100);
   const [ restart, setRestart ] = useState(true);
@@ -14,19 +14,23 @@ function CountDownTimer({ timer }) {
   }, [timer]);
 
   useEffect(() => {
-    let timeoutId;
-    if (restart) {
-      timeoutId = setTimeout(() => {
-        setRestart(false);
-      } , 100);
-    } else if (countdown.time > 0) {
-      setWidth(width - 100 / (timer.time));
-      timeoutId = setTimeout(() => {
-        setCountdown({time: countdown.time - 1});
-      }, 1000 + 100 / (timer.time));
-    }
+    if (countdown.time === 0)
+      onTimerOut();
+    else {
+      let timeoutId;
+      if (restart) {
+        timeoutId = setTimeout(() => {
+          setRestart(false);
+        } , 100);
+      } else if (countdown.time > 0) {
+        setWidth(width - 100 / (timer.time));
+        timeoutId = setTimeout(() => {
+          setCountdown({time: countdown.time - 1});
+        }, 1000 + 100 / (timer.time));
+      }
 
-    return () => clearTimeout(timeoutId);
+      return () => clearTimeout(timeoutId);
+    }
   }, [countdown, restart])
 
   const countdownHiderStyle = () => {
