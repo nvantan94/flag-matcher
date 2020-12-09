@@ -24,14 +24,22 @@ function App() {
     setControlNumber(boardGame.randomControlNumber());
   }, []);
 
-  const onFreeItem = (pos, boardId) => {
-    if (boardGame.board.boardId !== boardId)
-      return;
-    if (boardGame.freeCell(pos)) {
-      boardGame.randomNewCells(3);
+  const add3NewCells = () => {
+    if (!boardGame.randomNewCells(3)) {
+      setGameOver(true);
+    } else {
       setControlNumber(boardGame.randomControlNumber());
       setTimer({time: COUNTDOWN_TIME});
     }
+  }
+
+  const onFreeItem = (pos, boardId) => {
+    if (boardGame.board.boardId !== boardId)
+      return;
+    const val = boardGame.freeCell(pos);
+    if (!boardGame.isAvailable(val))
+      add3NewCells();
+    
     setBoard(boardGame.board);
     setScore(score + 1);
   };
@@ -39,10 +47,9 @@ function App() {
   const onTimerOut = (boardId) => {
     if (boardGame.board.boardId !== boardId)
       return;
-    boardGame.randomNewCells(3);
+    add3NewCells();
+
     setBoard(boardGame.board);
-    setControlNumber(boardGame.randomControlNumber());
-    setTimer({time: COUNTDOWN_TIME});
   }
 
   return (
@@ -63,7 +70,10 @@ function App() {
           board={board}
         />
       </div>
-      <GameOver show={gameOver} />
+      <GameOver
+        show={gameOver}
+        score={score}
+      />
     </div>
   );
 }

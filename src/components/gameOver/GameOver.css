@@ -6,10 +6,39 @@
   left: 0;
   background-color: white;
   z-index: 200;
-  opacity: 0.7;
+  opacity: 0.9;
   transition: top 0.5s ease-out;
 }
 
 .gameOver.show {
   top: 0;
+}
+
+.gameOver__container {
+  margin-top: 120px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gameOver__container .finalScore {
+  margin-top: 20px;
+}
+
+.gameOver__container .startAgainBtn {
+  padding: 12px 29px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: #01a8c1;
+  background: linear-gradient(#e5ae09,#f1890b);
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  color: white;
+}
+
+.gameOver__container .startAgainBtn:active {
+  background-color: #d39e00;
+  border: 1px solid black;
 }

@@ -2,7 +2,6 @@
 export default class BoardGame {
   constructor() {
     this.board = new Array(BoardGame.BOARD_SQUARE_SIZE * BoardGame.BOARD_SQUARE_SIZE);
-
     this.assignedValues = new Array(BoardGame.NUMBER_OF_POTENTION_VALUE + 1);
   }
 
@@ -15,35 +14,49 @@ export default class BoardGame {
     for (var i = 1; i <= BoardGame.NUMBER_OF_POTENTION_VALUE; i++)
       this.assignedValues[i] = [];
     this.boardId = 0;
+    this.availableCells = BoardGame.BOARD_SIZE;
 
     this.randomNewCells(8);
+  }
+
+  addNewCell(pos, value) {
+    this.board[pos] = value;
+    this.assignedValues[value].push(pos);
+    this.availableCells--;
+  }
+
+  removeCell(pos) {
+    const val = this.board[pos];
+    this.board[pos] = 0;
+    this.assignedValues[val] = this.assignedValues[val]
+      .filter(v => v !== pos);
+    this.availableCells++;
+
+    return val;
   }
 
   randomNewCells(n) {
     this.board = [...this.board]
     for (var i = 0; i < n; i++) {
+      if (this.availableCells === 0)
+        return false;
+
       const number = this.randomNewNumber();
       const pos = this.randomNewPosition();
 
-      this.board[pos] = number;
-      this.assignedValues[number].push(pos);
+      this.addNewCell(pos, number);
     }
     this.boardId++;
+    return true;
   }
 
   freeCell(pos) {
-    const val = this.board[pos];
-    this.assignedValues[val] = this.assignedValues[val]
-      .filter(v => v !== pos);
     this.board = [...this.board];
-    this.board[pos] = 0;
-
-    return this.assignedValues[val].length === 0;
+    return this.removeCell(pos);
   }
 
-  deepCopyBoard() {
-    const newBoard = [...this.board];
-    return newBoard;
+  isAvailable(value) {
+    return this.assignedValues[value].length > 0;
   }
 
   randomControlNumber() {
