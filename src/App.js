@@ -6,6 +6,7 @@ import FlagBoard from "./components/flagBoard/FlagBoard";
 import Control from "./components/control/Control";
 
 import BoardGame from "./api/BoardGame";
+import GameOver from "./components/gameOver/GameOver";
 
 const boardGame = new BoardGame();
 const COUNTDOWN_TIME = 5;
@@ -15,6 +16,7 @@ function App() {
   const [board, setBoard] = useState(boardGame.board);
   const [score, setScore ] = useState(0);
   const [timer, setTimer] = useState({time: COUNTDOWN_TIME});
+  const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
     boardGame.start();
@@ -61,6 +63,7 @@ function App() {
           board={board}
         />
       </div>
+      <GameOver show={gameOver} />
     </div>
   );
 }

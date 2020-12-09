@@ -2,7 +2,13 @@
   margin: 0;
 }
 
+.App {
+  height: 100vh;
+  position: relative;
+}
+
 .App__container {
   padding: 10px;
   background-color: #fafafa;
+  height: calc(100% - 20px);
 }
