@@ -1,0 +1,8 @@
+* {
+  margin: 0;
+}
+
+.App__container {
+  padding: 10px;
+  background-color: #fafafa;
+}

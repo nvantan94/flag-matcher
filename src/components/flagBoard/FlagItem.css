@@ -1,0 +1,28 @@
+.flagItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 2px;
+}
+
+.flagItem__content {
+  font-size: 1.7rem;
+  height: calc(100% - 4px);
+  width: calc(100% - 5px);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.flagRow .flagItem__content {
+  box-shadow: 2px 2px 1px 0 rgba(196,196,196,1);
+}
+
+.flagRow .flagItem__content:active {
+  border: 1px solid rgba(196,196,196,1);
+}

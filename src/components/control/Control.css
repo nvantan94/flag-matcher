@@ -1,0 +1,27 @@
+.control {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.control__div3 {
+  width: 33.3333333%;
+}
+
+.control__item_wrapper {
+  width: 37.5%;
+  padding-top: 37.5%;
+  position: relative;
+  border: 1px solid black;
+}
+
+.control__countdown {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.control__score {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row-reverse;
+}

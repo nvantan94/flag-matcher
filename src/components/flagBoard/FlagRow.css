@@ -1,0 +1,10 @@
+.flagRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.flagItemContainer {
+  width: 16.66666666667%;
+  padding-top: 16.6666666667%;
+  position: relative;
+}
