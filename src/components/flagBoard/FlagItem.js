@@ -1,6 +1,8 @@
 import React from 'react'
 import './FlagItem.css'
 
+import Flags from '../../api/Flags'
+
 function FlagItem({ number, canRemove, onFreeItem, pos, boardId }) {
   const onClick = () => {
     if (canRemove)
@@ -11,7 +13,7 @@ function FlagItem({ number, canRemove, onFreeItem, pos, boardId }) {
       <div 
         onClick={onClick}
         className="flagItem__content">
-          {number === 0? '' : number}
+          {number === 0? '' : <img src={Flags[number - 1].src} />}
       </div>
     </div>
   )

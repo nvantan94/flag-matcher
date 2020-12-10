@@ -1,25 +1,29 @@
 .gameOver {
   position: absolute;
-  height: 100vh;
+  height: 0;
   width: 100vw;
-  top: -100vh;
   left: 0;
+  top: 0;
   background-color: white;
   z-index: 200;
   opacity: 0.9;
-  transition: top 0.5s ease-out;
+  transition: height 0.5s ease;
 }
 
 .gameOver.show {
-  top: 0;
+  height: 100vh;
 }
 
 .gameOver__container {
   margin-top: 120px;
   height: 100%;
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
+}
+
+.gameOver.show .gameOver__container {
+  display: flex;
 }
 
 .gameOver__container .finalScore {
