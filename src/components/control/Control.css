@@ -1,17 +1,13 @@
 .control {
   display: flex;
   margin-bottom: 10px;
-}
-
-.control__div3 {
-  width: 33.3333333%;
+  justify-content: space-between;
 }
 
 .control__item_wrapper {
-  width: 37.5%;
-  padding-top: 37.5%;
+  width: 100%;
+  padding-top: 100%;
   position: relative;
-  border: 1px solid black;
 }
 
 .control__countdown {
