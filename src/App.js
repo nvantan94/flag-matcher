@@ -19,10 +19,20 @@ function App() {
   const [gameOver, setGameOver] = useState(false);
 
   useEffect(() => {
+    start();
+  }, []);
+
+  const restart = () => {
+    start();
+    setGameOver(false);
+    setTimer({time: COUNTDOWN_TIME});
+  }
+
+  const start = () => {
     boardGame.start();
     setBoard(boardGame.board);
     setControlNumber(boardGame.randomControlNumber());
-  }, []);
+  }
 
   const add3NewCells = () => {
     if (!boardGame.randomNewCells(3)) {
@@ -34,7 +44,7 @@ function App() {
   }
 
   const onFreeItem = (pos, boardId) => {
-    if (boardGame.board.boardId !== boardId)
+    if (boardGame.boardId !== boardId)
       return;
     const val = boardGame.freeCell(pos);
     if (!boardGame.isAvailable(val))
@@ -45,7 +55,7 @@ function App() {
   };
 
   const onTimerOut = (boardId) => {
-    if (boardGame.board.boardId !== boardId)
+    if (boardGame.boardId !== boardId)
       return;
     add3NewCells();
 
@@ -58,7 +68,7 @@ function App() {
         <CountDownTimer
           timer={timer}
           onTimerOut={onTimerOut}
-          boardId={board.boardId}
+          boardId={boardGame.boardId}
         />
         <Control
           controlNumber={controlNumber}
@@ -68,11 +78,13 @@ function App() {
           controlNumber={controlNumber}
           onFreeItem={onFreeItem}
           board={board}
+          boardId={boardGame.boardId}
         />
       </div>
       <GameOver
         show={gameOver}
         score={score}
+        restart={restart}
       />
     </div>
   );

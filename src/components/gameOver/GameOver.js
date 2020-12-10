@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './GameOver.css'
 
-function GameOver({ show, score }) {
+function GameOver({ show, score, restart }) {
   const [isShow, setIsShow] = useState(show);
 
   useEffect(() => setIsShow(show), [show])
@@ -11,7 +11,7 @@ function GameOver({ show, score }) {
       <div className="gameOver__container">
         <h1>GAME OVER!!!</h1>
         <h3 className="finalScore">your score: {score}</h3>
-        <button className="startAgainBtn">start again!</button>
+        <button className="startAgainBtn" onClick={restart}>start again!</button>
       </div>
     </div>
   )
