@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  box-sizing: border-box;
 }
 
 .App {
@@ -10,7 +11,7 @@
 .App__container {
   padding: 10px;
   background-color: #fafafa;
-  height: calc(100% - 20px);
+  height: 100%;
   max-width: 400px;
   margin: 0 auto;
   border-radius: 5px;

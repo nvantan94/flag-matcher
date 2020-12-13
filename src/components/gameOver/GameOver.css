@@ -1,7 +1,7 @@
 .gameOver {
   position: absolute;
   height: 0;
-  width: 100vw;
+  width: 100%;
   left: 0;
   top: 0;
   background-color: white;
@@ -11,11 +11,11 @@
 }
 
 .gameOver.show {
-  height: 100vh;
+  height: 100%;
 }
 
 .gameOver__container {
-  margin-top: 120px;
+  padding-top: 120px;
   height: 100%;
   display: none;
   flex-direction: column;
