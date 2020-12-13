@@ -4,9 +4,13 @@
   justify-content: space-between;
 }
 
+.control__container {
+  display: flex;
+}
+
 .control__item_wrapper {
-  width: 100%;
-  padding-top: 100%;
+  width: 50%;
+  padding-top: 33.5%;
   position: relative;
 }
 

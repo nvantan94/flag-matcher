@@ -17,19 +17,19 @@ function CountDownTimer({ timer, onTimerOut, boardId }) {
     if (countdown.time === 0)
       onTimerOut(boardId);
     else {
-      let timeoutId;
-      if (restart) {
-        timeoutId = setTimeout(() => {
-          setRestart(false);
-        } , 100);
-      } else if (countdown.time > 0) {
-        setWidth(width - 100 / (timer.time));
-        timeoutId = setTimeout(() => {
-          setCountdown({time: countdown.time - 1});
-        }, 1000 + 100 / (timer.time));
-      }
+      // let timeoutId;
+      // if (restart) {
+      //   timeoutId = setTimeout(() => {
+      //     setRestart(false);
+      //   } , 100);
+      // } else if (countdown.time > 0) {
+      //   setWidth(width - 100 / (timer.time));
+      //   timeoutId = setTimeout(() => {
+      //     setCountdown({time: countdown.time - 1});
+      //   }, 1000 + 100 / (timer.time));
+      // }
 
-      return () => clearTimeout(timeoutId);
+      // return () => clearTimeout(timeoutId);
     }
   }, [countdown, restart])
 

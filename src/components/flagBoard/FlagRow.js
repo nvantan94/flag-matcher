@@ -9,17 +9,16 @@ const flagItemContainerStyle = {
   position: 'relative'
 }
 
-function FlagRow({ data, controlNumber, onFreeItem, row, boardId }) {
+function FlagRow({ data, controlNumbers, onFreeItem, row }) {
   
   return (
     <div className="flagRow">
       {data.map((number, i) => 
         <div key={i} style={flagItemContainerStyle}>
           <FlagItem
-            pos={row * BoardGame.BOARD_SQUARE_SIZE + i}
-            canRemove={controlNumber === number}
+            pos={row * BoardGame.BOARD_SQUARE_COL_SIZE + i}
+            canRemove={controlNumbers.includes(number)}
             onFreeItem={onFreeItem}
-            boardId={boardId}
             number={number} />
         </div>)
       }
