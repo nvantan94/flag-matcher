@@ -1,22 +1,24 @@
 
 export default class BoardGame {
   constructor() {
-    this.board = new Array(BoardGame.BOARD_SQUARE_SIZE * BoardGame.BOARD_SQUARE_SIZE);
+    this.board = new Array(BoardGame.BOARD_SIZE);
     this.assignedValues = new Array(BoardGame.NUMBER_OF_POTENTION_VALUE + 1);
   }
 
-  static BOARD_SQUARE_SIZE = 5;
-  static NUMBER_OF_POTENTION_VALUE = 5;
-  static BOARD_SIZE = BoardGame.BOARD_SQUARE_SIZE * BoardGame.BOARD_SQUARE_SIZE;
+  static BOARD_SQUARE_ROW_SIZE = 6;
+  static BOARD_SQUARE_COL_SIZE = 5;
+  static NUMBER_OF_POTENTION_VALUE = 12;
+  static BOARD_SIZE = BoardGame.BOARD_SQUARE_ROW_SIZE * BoardGame.BOARD_SQUARE_COL_SIZE;
+  static MAXIMUM_NUMBER_OF_ONE_FLAG = 3;
+  static BOARD_ROW_IDX_ARRAY = [0, 1, 2, 3, 4, 5]
 
   start() {
-    this.board.fill(0);
     for (var i = 1; i <= BoardGame.NUMBER_OF_POTENTION_VALUE; i++)
       this.assignedValues[i] = [];
     this.boardId = 0;
     this.availableCells = BoardGame.BOARD_SIZE;
 
-    this.randomNewCells(8);
+    this.fillEntireBoard();
   }
 
   addNewCell(pos, value) {
@@ -35,6 +37,18 @@ export default class BoardGame {
     return val;
   }
 
+  fillEntireBoard() {
+    for (var i = 0; i < BoardGame.BOARD_SIZE; i++)
+      this.fillCell(i);
+  }
+
+  fillCell(pos) {
+    const number = this.randomNewNumber();
+    this.board[pos] = number;
+    this.assignedValues[number].push(pos);
+    this.availableCells--;
+  }
+
   randomNewCells(n) {
     this.board = [...this.board]
     for (var i = 0; i < n; i++) {
@@ -43,6 +57,7 @@ export default class BoardGame {
 
       const number = this.randomNewNumber();
       const pos = this.randomNewPosition();
+      console.log(number, pos);
 
       this.addNewCell(pos, number);
     }
@@ -59,9 +74,16 @@ export default class BoardGame {
     return this.assignedValues[value].length > 0;
   }
 
-  randomControlNumber() {
+  randomControlNumbers() {
+    const number1 = this.randomControlNumber();
+    const number2 = this.randomControlNumber(number1);
+    this.randomNumbers = [number1, number2];
+  }
+
+  randomControlNumber(exceptedNumber) {
     let number = parseInt(Math.random() * BoardGame.NUMBER_OF_POTENTION_VALUE + 1);
-    while (this.assignedValues[number].length === 0) {
+    while (this.assignedValues[number].length === 0 
+      || number === exceptedNumber) {
       number = number + 1;
       if (number > BoardGame.NUMBER_OF_POTENTION_VALUE)
         number = 1;
@@ -71,7 +93,7 @@ export default class BoardGame {
 
   randomNewNumber() {
     let number = parseInt(Math.random() * BoardGame.NUMBER_OF_POTENTION_VALUE + 1);
-    while (this.assignedValues[number].length === 5) {
+    while (this.assignedValues[number].length === BoardGame.MAXIMUM_NUMBER_OF_ONE_FLAG) {
       number = number + 1;
       if (number > BoardGame.NUMBER_OF_POTENTION_VALUE)
         number = 1;
