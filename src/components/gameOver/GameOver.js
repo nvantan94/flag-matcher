@@ -9,7 +9,7 @@ function GameOver({ show, score, restart }) {
   return (
     <div className={`gameOver${isShow? ' show' : ''}`}>
       <div className="gameOver__container">
-        <h1>GAME OVER!!!</h1>
+        <h1>CONGRATS!!!</h1>
         <h3 className="finalScore">your score: {score}</h3>
         <button className="startAgainBtn" onClick={restart}>start again!</button>
       </div>

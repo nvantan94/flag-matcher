@@ -9,7 +9,7 @@ import BoardGame from "./api/BoardGame";
 import GameOver from "./components/gameOver/GameOver";
 
 const boardGame = new BoardGame();
-const COUNTDOWN_TIME = 5;
+const COUNTDOWN_TIME = 30;
 
 function App() {
   const [controlNumbers, setControlNumbers] = useState([0, 0]);
@@ -30,17 +30,9 @@ function App() {
 
   const start = () => {
     boardGame.start();
+    setScore(0);
     setBoard(boardGame.board);
     setControlNumbers(boardGame.controlNumbers);
-  }
-
-  const add3NewCells = () => {
-    // if (!boardGame.randomNewCells(3)) {
-    //   setGameOver(true);
-    // } else {
-    //   setControlNumber(boardGame.randomControlNumber());
-    //   setTimer({time: COUNTDOWN_TIME});
-    // }
   }
 
   const onFreeItem = (pos) => {
@@ -52,20 +44,12 @@ function App() {
       setControlNumbers(boardGame.controlNumbers);
   };
 
-  const onTimerOut = (boardId) => {
-    // if (boardGame.boardId !== boardId)
-    //   return;
-    // add3NewCells();
-
-    // setBoard(boardGame.board);
-  }
-
   return (
     <div className="App">
       <div className="App__container">
         <CountDownTimer
           timer={timer}
-          onTimerOut={onTimerOut}
+          onTimerOut={() => setGameOver(true)}
         />
         <Control
           controlNumbers={controlNumbers}
