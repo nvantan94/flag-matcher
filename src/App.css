@@ -17,3 +17,23 @@
   border-radius: 5px;
   border: 1px solid #e5e5e5;
 }
+
+.App__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #002bff;
+}
+
+.App__title img {
+  width: 2rem;
+  object-fit: contain;
+}
+
+.App__title .title__left__image {
+  margin-right: 0.5rem;
+}
+
+.App__title .title__right__image {
+  margin-left: 0.5rem;
+}

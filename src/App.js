@@ -47,6 +47,11 @@ function App() {
   return (
     <div className="App">
       <div className="App__container">
+        <div className="App__title">
+          <img className="title__left__image" src="./static/images/gif/Flag_of_the_United_Nations.gif" />
+          Flag Matcher
+          <img className="title__right__image" src="./static/images/gif/Flag_of_the_United_Nations.gif" />
+        </div>
         <CountDownTimer
           timer={timer}
           onTimerOut={() => setGameOver(true)}
