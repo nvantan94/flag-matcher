@@ -46,3 +46,24 @@
   background-color: #d39e00;
   border: 1px solid black;
 }
+
+.gameOver__share {
+  margin-top: 0.5rem;
+  display: flex;
+  width: 5rem;
+  justify-content: space-between;
+}
+
+.gameOver__share__button {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.gameOver__share__button img {
+  width: 100%;
+  height: 100%;
+}
+
+.gameOver__share__button img:hover {
+  cursor: pointer;
+}
