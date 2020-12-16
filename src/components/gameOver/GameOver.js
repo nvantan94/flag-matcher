@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  LinkedinShareButton,
-  LinkedinIcon,
-  TwitterShareButton,
-  TwitterIcon,
-} from "react-share";
 import "./GameOver.css";
 
-var windowFeatures = "location=yes,height=500,width=500,scrollbars=yes,status=yes,top=100,left=100";
+const left =(window.screen.width - 500) / 2;
+const windowFeatures = "location=yes,height=500,width=500,scrollbars=yes,status=yes,top=100,left=" + left;
 
 function GameOver({ show, score, restart }) {
   const [isShow, setIsShow] = useState(show);
