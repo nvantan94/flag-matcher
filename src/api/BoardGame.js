@@ -37,8 +37,10 @@ export default class BoardGame {
   }
 
   fillEntireBoard() {
+    const number1 = this.randomNewNumber([]);
+    const number2 = this.randomNewNumber([number1]);
     for (var i = 0; i < BoardGame.BOARD_SIZE; i++)
-      this.fillCell(i, []);
+      this.fillCell(i, [number1, number2]);
   }
 
   fillCell(pos, exceptedNumbers) {
