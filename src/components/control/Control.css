@@ -14,6 +14,17 @@
   position: relative;
 }
 
+.control__item__hider {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background: white;
+  opacity: 0.5;
+  transition: width 0.2s ease;
+}
+
 .control__countdown {
   display: flex;
   align-items: flex-end;

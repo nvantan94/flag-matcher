@@ -12,7 +12,7 @@ const boardGame = new BoardGame();
 const COUNTDOWN_TIME = 30;
 
 function App() {
-  const [controlNumbers, setControlNumbers] = useState([0, 0]);
+  const [controlNumbers, setControlNumbers] = useState([{number: 0, remaining: 0}, {number: 0, remaining: 0}]);
   const [board, setBoard] = useState(boardGame.board);
   const [score, setScore ] = useState(0);
   const [timer, setTimer] = useState({time: COUNTDOWN_TIME});
@@ -36,12 +36,11 @@ function App() {
   }
 
   const onFreeItem = (pos) => {
-    const val = boardGame.freeCell(pos, controlNumbers);
+    boardGame.freeCell(pos, controlNumbers);
     
     setBoard(boardGame.board);
     setScore(score + 1);
-    if (boardGame.controlNumbers != controlNumbers)
-      setControlNumbers(boardGame.controlNumbers);
+    setControlNumbers(boardGame.controlNumbers);
   };
 
   return (

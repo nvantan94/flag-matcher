@@ -8,12 +8,22 @@ function Control({ controlNumbers, score}) {
   return (
     <div className="control">
       <div className="control__container" style={{width: (200 / BoardGame.BOARD_SQUARE_COL_SIZE) + '%'}}>
-        <div className="control__item_wrapper">
-          <FlagItem number={controlNumbers[0]} />
+        {controlNumbers.map((controlNumber, idx) => (
+          <div className="control__item_wrapper" key={idx}>
+            <div
+              className="control__item__hider"
+              style={{width: (100 * (1 - controlNumber.remaining / BoardGame.MAXIMUM_NUMBER_OF_ONE_FLAG)) + '%'}}></div>
+            <FlagItem number={controlNumber.number} />
+          </div>
+        ))}
+        {/* <div className="control__item_wrapper">
+          <div className="control__item__hider" style={{width: '33.333%'}}></div>
+          <FlagItem number={controlNumbers[0].number} />
         </div>
         <div className="control__item_wrapper">
+          <div className="control__item__hider" style={{width: '66.666%'}}></div>
           <FlagItem number={controlNumbers[1]} />
-        </div>
+        </div> */}
       </div>
       <div className="control__score">score: {score}</div>
     </div>

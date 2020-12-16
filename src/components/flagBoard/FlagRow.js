@@ -17,7 +17,7 @@ function FlagRow({ data, controlNumbers, onFreeItem, row }) {
         <div key={i} style={flagItemContainerStyle}>
           <FlagItem
             pos={row * BoardGame.BOARD_SQUARE_COL_SIZE + i}
-            canRemove={controlNumbers.includes(number)}
+            canRemove={controlNumbers[0].number === number || controlNumbers[1].number === number}
             onFreeItem={onFreeItem}
             number={number} />
         </div>)

@@ -52,12 +52,19 @@ export default class BoardGame {
 
   freeCell(pos) {
     this.board = [...this.board];
-    this.removeCell(pos);
-    this.fillCell(pos, this.controlNumbers);
+    const val = this.removeCell(pos);
+    this.fillCell(pos, this.controlNumbers.map(controlNumber => controlNumber.number));
 
-    if (this.assignedValues[this.controlNumbers[0]].length === 0
-      && this.assignedValues[this.controlNumbers[1]].length === 0)
+    if (this.assignedValues[this.controlNumbers[0].number].length === 0
+      && this.assignedValues[this.controlNumbers[1].number].length === 0)
       this.controlNumbers = this.randomControlNumbers();
+    else {
+      const number1 = this.controlNumbers[0].number;
+      const number2 = this.controlNumbers[1].number;
+      this.controlNumbers = [ 
+        {number: number1, remaining: val === number1? this.controlNumbers[0].remaining - 1: this.controlNumbers[0].remaining},
+        { number: number2, remaining: val === number2? this.controlNumbers[1].remaining - 1: this.controlNumbers[1].remaining}]
+    }
   }
 
   isAvailable(value) {
@@ -67,7 +74,8 @@ export default class BoardGame {
   randomControlNumbers() {
     const number1 = this.randomControlNumber();
     const number2 = this.randomControlNumber(number1);
-    return [number1, number2];
+    return [ {number: number1, remaining: BoardGame.MAXIMUM_NUMBER_OF_ONE_FLAG},
+            { number: number2, remaining: BoardGame.MAXIMUM_NUMBER_OF_ONE_FLAG}];
   }
 
   randomControlNumber(exceptingNumber) {
