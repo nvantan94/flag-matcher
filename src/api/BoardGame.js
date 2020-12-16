@@ -8,7 +8,7 @@ export default class BoardGame {
   static BOARD_SQUARE_COL_SIZE = 5;
   static NUMBER_OF_POTENTION_VALUE = 12;
   static BOARD_SIZE = BoardGame.BOARD_SQUARE_ROW_SIZE * BoardGame.BOARD_SQUARE_COL_SIZE;
-  static MAXIMUM_NUMBER_OF_ONE_FLAG = Math.ceil(BoardGame.BOARD_SIZE / BoardGame.NUMBER_OF_POTENTION_VALUE);
+  static MAXIMUM_NUMBER_OF_ONE_FLAG = Math.ceil(BoardGame.BOARD_SIZE / (BoardGame.NUMBER_OF_POTENTION_VALUE - 2));
   static BOARD_ROW_IDX_ARRAY = [0, 1, 2, 3, 4, 5]
 
   start() {
