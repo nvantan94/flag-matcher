@@ -3,15 +3,15 @@ import "./GameOver.css";
 
 const left =(window.screen.width - 500) / 2;
 const windowFeatures = "location=yes,height=500,width=500,scrollbars=yes,status=yes,top=100,left=" + left;
+const encodedUrl = encodeURIComponent(window.location.href); 
+const encodedHashtags = encodeURIComponent("flagmatcher");
 
 function GameOver({ show, score, restart }) {
   const [isShow, setIsShow] = useState(show);
 
   useEffect(() => setIsShow(show), [show]);
 
-  const encodedUrl = encodeURIComponent("http://www.camperstribe.com");
   const encodedTitle = encodeURIComponent(`Flag Matcher - My score: ${score}!!!`);
-  const encodedHashtags = encodeURIComponent("flagmatcher");
 
   const genFacebookShareUrl = () => {
     return "https://www.facebook.com/sharer/sharer.php?u=" 
