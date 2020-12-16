@@ -47,9 +47,17 @@ function App() {
     <div className="App">
       <div className="App__container">
         <div className="App__title">
-          <img className="title__left__image" src="./static/images/gif/Flag_of_the_United_Nations.gif" />
+          <img
+            className="title__left__image"
+            src="./static/images/gif/Flag_of_the_United_Nations.gif"
+            alt='United-Nations-Flag'
+          />
           Flag Matcher
-          <img className="title__right__image" src="./static/images/gif/Flag_of_the_United_Nations.gif" />
+          <img
+            className="title__right__image"
+            src="./static/images/gif/Flag_of_the_United_Nations.gif"
+            alt='United-Nations-Flag'
+          />
         </div>
         <CountDownTimer
           timer={timer}

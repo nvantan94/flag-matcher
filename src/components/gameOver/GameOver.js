@@ -45,15 +45,21 @@ function GameOver({ show, score, restart }) {
             <img
               src="./static/images/icon/facebook.png"
               onClick={onFacebookShare}
+              alt='facebook'
             />
           </div>
           <div className="gameOver__share__button">
-            <img onClick={onTwitterShare} src="./static/images/icon/twitter.png" />
+            <img
+              onClick={onTwitterShare}
+              src="./static/images/icon/twitter.png"
+              alt='twitter'
+            />
           </div>
           <div className="gameOver__share__button">
             <img
               src="./static/images/icon/linkedin.png"
               onClick={onLinkedinShare}
+              alt='linkedin'
             />
           </div>
         </div>
