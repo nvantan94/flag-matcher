@@ -56,6 +56,7 @@
 .gameOver__share__button {
   width: 1.5rem;
   height: 1.5rem;
+  margin-right: 0.5rem;
 }
 
 .gameOver__share__button img {
