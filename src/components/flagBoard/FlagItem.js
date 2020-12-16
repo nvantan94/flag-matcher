@@ -13,7 +13,7 @@ function FlagItem({ number, canRemove, onFreeItem, pos, boardId }) {
       <div 
         onClick={onClick}
         className="flagItem__content">
-          {number === 0? '' : <img src={Flags[number - 1].src} />}
+          {number === 0? '' : <img alt={Flags[number-1].alt} src={Flags[number - 1].src} />}
       </div>
     </div>
   )
